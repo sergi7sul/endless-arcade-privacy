@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endless Arcade — Privacy Policy</title>
+<meta name="description" content="Privacy policy for the Endless Arcade Android game: no ads, no tracking, optional Google Play Games leaderboards and achievements.">
+<meta name="theme-color" content="#07061a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#07061a; --bg2:#120a33; --ink:#eef0ff; --dim:#a9acd6;
+    --cyan:#22d3ee; --pink:#ff3ea5; --gold:#ffc45c; --green:#7ed957; --violet:#a07bff;
+    --card:rgba(20,18,58,.72); --line:rgba(160,123,255,.28);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; color:var(--ink); background:var(--bg);
+    font:17px/1.65 "Outfit",system-ui,sans-serif; overflow-x:hidden;
+  }
+  #stars { position:fixed; inset:0; width:100%; height:100%; z-index:-2; }
+  /* Synthwave floor grid at the bottom of the screen. */
+  .grid {
+    position:fixed; left:-50%; right:-50%; bottom:0; height:42vh; z-index:-1;
+    background:
+      linear-gradient(to top, rgba(255,62,165,.35) 2px, transparent 2px) 0 0/100% 48px,
+      linear-gradient(to right, rgba(34,211,238,.28) 2px, transparent 2px) 0 0/64px 100%;
+    transform:perspective(320px) rotateX(62deg); transform-origin:bottom;
+    mask-image:linear-gradient(to top, #000 10%, transparent 90%);
+    -webkit-mask-image:linear-gradient(to top, #000 10%, transparent 90%);
+    animation:floor 2.4s linear infinite;
+  }
+  @keyframes floor { to { background-position:0 48px, 0 0; } }
+  /* CRT scanlines over everything. */
+  body::after {
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:50;
+    background:repeating-linear-gradient(to bottom, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
+  }
+
+  main { max-width:860px; margin:0 auto; padding:20px 16px 120px; }
+  .pixel { font-family:"Press Start 2P",monospace; letter-spacing:.04em; }
+
+  .bar { display:flex; justify-content:flex-end; gap:6px; flex-wrap:wrap; }
+  .bar button {
+    font:10px/1 "Press Start 2P",monospace; color:var(--dim); background:transparent;
+    border:2px solid var(--line); padding:9px 10px; border-radius:4px; cursor:pointer;
+  }
+  .bar button[aria-pressed="true"] { color:var(--bg); background:var(--cyan); border-color:var(--cyan); box-shadow:0 0 14px var(--cyan); }
+
+  .hero { text-align:center; padding:56px 0 24px; }
+  .coin {
+    display:inline-block; font-size:11px; color:var(--gold); border:2px solid var(--gold);
+    padding:8px 12px; border-radius:4px; animation:blink 1.1s steps(2,start) infinite;
+  }
+  @keyframes blink { to { visibility:hidden; } }
+  h1 {
+    margin:22px 0 6px; font-size:clamp(28px,8vw,64px); line-height:1.05;
+    background:linear-gradient(180deg,#fff 0%,#ffd6f0 35%,var(--pink) 55%,var(--violet) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 18px rgba(255,62,165,.55)) drop-shadow(0 4px 0 #2a0b4f);
+    font-weight:800; letter-spacing:.02em; text-transform:uppercase;
+  }
+  .sub { font-size:clamp(11px,2.6vw,15px); color:var(--cyan); text-shadow:0 0 12px var(--cyan); }
+  .date { color:var(--dim); margin-top:18px; font-size:15px; }
+  .lead { max-width:640px; margin:18px auto 0; font-size:18px; }
+
+  /* Scoreboard of zeros. */
+  .score { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:40px 0 8px; }
+  .tile {
+    background:var(--card); border:2px solid var(--line); border-radius:10px;
+    padding:16px 8px 14px; text-align:center; backdrop-filter:blur(6px);
+  }
+  .tile b { display:block; font:28px/1 "Press Start 2P",monospace; color:var(--c); text-shadow:0 0 16px var(--c); }
+  .tile span { display:block; margin-top:12px; font-size:14px; color:var(--dim); line-height:1.3; }
+  @media (max-width:640px) { .score { grid-template-columns:repeat(2,1fr); } }
+
+  /* Levels. */
+  .level {
+    position:relative; margin-top:22px; padding:22px 22px 18px 22px;
+    background:var(--card); border:2px solid var(--line); border-radius:14px; backdrop-filter:blur(6px);
+    opacity:0; transform:translateY(24px); transition:opacity .6s, transform .6s, border-color .3s, box-shadow .3s;
+  }
+  .level.on { opacity:1; transform:none; }
+  .level:hover { border-color:var(--c); box-shadow:0 0 0 1px var(--c), 0 0 32px -8px var(--c); }
+  .level::before {
+    content:""; position:absolute; left:-2px; top:18px; bottom:18px; width:4px; border-radius:2px;
+    background:var(--c); box-shadow:0 0 12px var(--c);
+  }
+  .lv { font-size:10px; color:var(--c); }
+  .level h2 { margin:8px 0 10px; font-size:22px; line-height:1.25; }
+  .level p, .level li { color:#d9dbf5; }
+  .level ul { padding-left:0; list-style:none; margin:10px 0; }
+  .level li { position:relative; padding-left:26px; margin:8px 0; }
+  .level li::before {
+    content:""; position:absolute; left:4px; top:.6em; width:10px; height:10px;
+    background:var(--c); box-shadow:0 0 8px var(--c); transform:rotate(45deg);
+  }
+  .level a { color:var(--c); font-weight:600; }
+  .boss { border-width:3px; }
+  .badges { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 4px; }
+  .badge {
+    display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+    background:rgba(126,217,87,.12); border:1px solid rgba(126,217,87,.5); font-size:14px;
+  }
+  .badge svg { width:18px; height:18px; }
+
+  footer { text-align:center; margin-top:56px; color:var(--dim); font-size:14px; }
+  footer .pixel { display:block; font-size:11px; color:var(--pink); margin-bottom:10px; text-shadow:0 0 10px var(--pink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grid, .coin { animation:none; }
+    .level { transition:none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="grid" aria-hidden="true"></div>
+<main>
+  <nav class="bar" aria-label="Language">
+    <button data-lang="es">ES</button><button data-lang="en">EN</button><button data-lang="pt">PT</button><button data-lang="fr">FR</button>
+  </nav>
+  <section class="hero">
+    <span class="coin pixel" data-t="coin"></span>
+    <h1 data-t="title"></h1>
+    <div class="sub pixel">ENDLESS ARCADE</div>
+    <div class="date" data-t="date"></div>
+    <p class="lead" data-t="lead"></p>
+  </section>
+  <section class="score" data-score></section>
+  <div data-levels></div>
+  <footer>
+    <span class="pixel" data-t="over"></span>
+    <span data-t="foot"></span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var MAIL = "thorlabsapps@gmail.com";
+  var ISSUES = "https://github.com/sergi7sul/endless-arcade-privacy/issues";
+  var GP = '<a href="https://policies.google.com/privacy" rel="noopener">';
+  var GT = '<a href="https://policies.google.com/terms" rel="noopener">';
+  var contact = '<a href="mailto:' + MAIL + '">' + MAIL + '</a>';
+  var issues = '<a href="' + ISSUES + '" rel="noopener">GitHub</a>';
+  var colors = ["--cyan", "--green", "--gold", "--pink", "--violet", "--cyan", "--gold", "--pink", "--green"];
+
+  var T = {
+    es: {
+      coin: "INSERT COIN", title: "Política de privacidad", date: "Última actualización: 21 de octubre de 2026",
+      lead: "Cómo trata la información <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android. Versión corta: tus partidas son tuyas.",
+      score: [["0", "anuncios"], ["0", "rastreadores"], ["0", "servidores propios"], ["1", "servicio opcional: Play Juegos"]],
+      lv: "NIVEL", boss: "JEFE FINAL",
+      levels: [
+        ["Tus datos se quedan en tu dispositivo",
+         "<p>El juego guarda localmente, solo en tu dispositivo, lo que necesita para funcionar:</p><ul><li>Puntuaciones y récords de cada minijuego.</li><li>Monedas, objetos y personalizaciones desbloqueadas.</li><li>Logros locales y progreso de los tutoriales.</li><li>Ajustes: idioma, sonido, vibración, etc.</li></ul><p>No salen del dispositivo, no se copian en la nube y el desarrollador no tiene acceso a ellos. Se borran al desinstalar el juego o al borrar sus datos desde los ajustes de Android.</p>"],
+        ["Google Play Juegos: clasificaciones y logros",
+         "<div class='badges'>{B:Clasificaciones}{B:Logros}{B:Opcional}</div><p>Endless Arcade usa Google Play Juegos para sus clasificaciones y trofeos. Cuando el juego se conecta a tu perfil de Play Juegos:</p><ul><li>Google trata tu identificador de jugador, tu nombre de jugador y tu avatar, junto con las puntuaciones que envías y los logros que desbloqueas.</li><li>Tu nombre, avatar y puntuaciones pueden verlos otros jugadores en las clasificaciones, según la visibilidad que elijas en tu perfil de Play Juegos.</li><li>El desarrollador solo recibe de Google lo necesario para mostrar clasificaciones y logros; nunca tu correo ni otros datos de tu cuenta de Google.</li></ul><p>Google realiza este tratamiento según su " + GP + "Política de privacidad</a> y sus " + GT + "Términos del servicio</a>. Puedes cambiar la visibilidad, cerrar sesión o eliminar tus datos desde la app Google Play Juegos o tu cuenta de Google. Puedes jugar sin Play Juegos.</p>"],
+        ["Permisos",
+         "<ul><li><strong>Vibración</strong>: respuesta háptica al jugar. Se desactiva en Ajustes.</li><li><strong>Sensores de movimiento</strong> (giroscopio/acelerómetro): solo para efectos visuales; se procesan al instante y no se guardan ni se envían.</li></ul><p>El juego no accede a tu ubicación, contactos, cámara, micrófono, fotos ni archivos.</p>"],
+        ["Publicidad, analítica y terceros",
+         "<p>Sin anuncios, sin SDK de analítica o seguimiento, y sin venta ni cesión de datos personales a terceros. El único servicio externo es Google Play Juegos.</p>"],
+        ["Menores",
+         "<p>El desarrollador no recoge conscientemente datos personales de nadie, incluidos menores. El uso de Play Juegos por menores se rige por las normas de Google y los controles parentales de Google Family Link.</p>"],
+        ["Seguridad y conservación",
+         "<p>Los datos locales viven en el almacenamiento privado de la app, que otras apps no pueden leer, hasta que desinstalas el juego o borras sus datos. Los datos de Play Juegos se conservan según las políticas de Google.</p>"],
+        ["Tus derechos",
+         "<p>El desarrollador no almacena datos personales tuyos, así que no hay nada que consultar, corregir o borrar en sus sistemas. Para los datos que trata Google, ejerce tus derechos desde tu cuenta de Google.</p>"],
+        ["Cambios en esta política",
+         "<p>Si la política cambia (por ejemplo, porque el juego estrene funciones), la nueva versión se publicará aquí con su fecha.</p>"],
+        ["Contacto",
+         "<p>¿Dudas? Escribe a " + contact + " o abre una consulta en " + issues + ". También desde el juego: <em>Ajustes → Contacto / Soporte</em>.</p>"]
+      ],
+      badge: "", over: "GAME OVER?", foot: "Nunca. Sigue jugando. 🕹️"
+    },
+    en: {
+      coin: "INSERT COIN", title: "Privacy Policy", date: "Last updated: October 21, 2026",
+      lead: "How <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) for Android handles information. Short version: your games are yours.",
+      score: [["0", "ads"], ["0", "trackers"], ["0", "own servers"], ["1", "optional service: Play Games"]],
+      lv: "LEVEL", boss: "FINAL BOSS",
+      levels: [
+        ["Your data stays on your device",
+         "<p>The game stores, locally and only on your device, what it needs to work:</p><ul><li>Scores and best results for every minigame.</li><li>Coins, items and unlocked customisations.</li><li>Local achievements and tutorial progress.</li><li>Settings: language, sound, vibration, etc.</li></ul><p>It never leaves the device, is not backed up to the cloud, and the developer cannot access it. It is deleted when you uninstall the game or clear its data in Android settings.</p>"],
+        ["Google Play Games: leaderboards and achievements",
+         "<div class='badges'>{B:Leaderboards}{B:Achievements}{B:Optional}</div><p>Endless Arcade uses Google Play Games for its leaderboards and trophies. When the game connects to your Play Games profile:</p><ul><li>Google processes your player ID, gamer name and avatar, plus the scores you submit and the achievements you unlock.</li><li>Other players may see your name, avatar and scores on leaderboards, depending on the visibility you choose in your Play Games profile.</li><li>The developer only receives from Google what is needed to show leaderboards and achievements; never your email or any other Google Account data.</li></ul><p>Google carries out this processing under its " + GP + "Privacy Policy</a> and " + GT + "Terms of Service</a>. You can change visibility, sign out or delete your data from the Google Play Games app or your Google Account. You can play without Play Games.</p>"],
+        ["Permissions",
+         "<ul><li><strong>Vibration</strong>: haptic feedback while playing. It can be turned off in Settings.</li><li><strong>Motion sensors</strong> (gyroscope/accelerometer): visual effects only; processed in real time, never stored or sent.</li></ul><p>The game does not access your location, contacts, camera, microphone, photos or files.</p>"],
+        ["Advertising, analytics and third parties",
+         "<p>No ads, no analytics or tracking SDKs, and no selling or sharing of personal data with third parties. The only external service is Google Play Games.</p>"],
+        ["Children",
+         "<p>The developer does not knowingly collect personal data from anyone, including children. Children's use of Play Games is governed by Google's rules and Google Family Link parental controls.</p>"],
+        ["Security and retention",
+         "<p>Local data lives in the app's private storage, which other apps cannot read, until you uninstall the game or clear its data. Play Games data is retained according to Google's policies.</p>"],
+        ["Your rights",
+         "<p>The developer stores no personal data about you, so there is nothing to access, correct or delete on its systems. For data processed by Google, exercise your rights from your Google Account.</p>"],
+        ["Changes to this policy",
+         "<p>If this policy changes (for example, when the game gets new features), the new version will be published here with its date.</p>"],
+        ["Contact",
+         "<p>Questions? Email " + contact + " or open an issue on " + issues + ". Also from the game: <em>Settings → Contact / Support</em>.</p>"]
+      ],
+      over: "GAME OVER?", foot: "Never. Keep playing. 🕹️"
+    },
+    pt: {
+      coin: "INSERT COIN", title: "Política de Privacidade", date: "Última atualização: 21 de outubro de 2026",
+      lead: "Como o <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android trata as informações. Versão curta: os seus jogos são seus.",
+      score: [["0", "anúncios"], ["0", "rastreadores"], ["0", "servidores próprios"], ["1", "serviço opcional: Play Jogos"]],
+      lv: "NÍVEL", boss: "CHEFE FINAL",
+      levels: [
+        ["Os seus dados ficam no seu dispositivo",
+         "<p>O jogo guarda localmente, apenas no seu dispositivo, o necessário para funcionar:</p><ul><li>Pontuações e recordes de cada minijogo.</li><li>Moedas, objetos e personalizações desbloqueadas.</li><li>Conquistas locais e progresso dos tutoriais.</li><li>Definições: idioma, som, vibração, etc.</li></ul><p>Não saem do dispositivo, não são copiados para a nuvem e o programador não tem acesso a eles. São apagados ao desinstalar o jogo ou limpar os seus dados nas definições do Android.</p>"],
+        ["Google Play Jogos: classificações e conquistas",
+         "<div class='badges'>{B:Classificações}{B:Conquistas}{B:Opcional}</div><p>O Endless Arcade usa o Google Play Jogos para classificações e troféus. Quando o jogo se liga ao seu perfil do Play Jogos:</p><ul><li>A Google trata o seu ID de jogador, nome de jogador e avatar, bem como as pontuações enviadas e as conquistas desbloqueadas.</li><li>Outros jogadores podem ver o seu nome, avatar e pontuações nas classificações, conforme a visibilidade escolhida no seu perfil do Play Jogos.</li><li>O programador recebe da Google apenas o necessário para mostrar classificações e conquistas; nunca o seu email nem outros dados da Conta Google.</li></ul><p>A Google faz este tratamento ao abrigo da sua " + GP + "Política de Privacidade</a> e dos " + GT + "Termos de Utilização</a>. Pode alterar a visibilidade, terminar sessão ou eliminar os seus dados na app Google Play Jogos ou na sua Conta Google. Pode jogar sem o Play Jogos.</p>"],
+        ["Permissões",
+         "<ul><li><strong>Vibração</strong>: feedback háptico ao jogar. Pode ser desativada nas Definições.</li><li><strong>Sensores de movimento</strong> (giroscópio/acelerómetro): só para efeitos visuais; processados no momento, nunca guardados nem enviados.</li></ul><p>O jogo não acede à sua localização, contactos, câmara, microfone, fotos ou ficheiros.</p>"],
+        ["Publicidade, análises e terceiros",
+         "<p>Sem anúncios, sem SDK de análise ou rastreio, e sem venda ou partilha de dados pessoais com terceiros. O único serviço externo é o Google Play Jogos.</p>"],
+        ["Menores",
+         "<p>O programador não recolhe conscientemente dados pessoais de ninguém, incluindo menores. O uso do Play Jogos por menores rege-se pelas regras da Google e pelos controlos parentais do Google Family Link.</p>"],
+        ["Segurança e conservação",
+         "<p>Os dados locais ficam no armazenamento privado da app, que outras apps não conseguem ler, até desinstalar o jogo ou limpar os seus dados. Os dados do Play Jogos são conservados segundo as políticas da Google.</p>"],
+        ["Os seus direitos",
+         "<p>O programador não guarda dados pessoais seus, por isso não há nada a consultar, corrigir ou apagar nos seus sistemas. Para os dados tratados pela Google, exerça os seus direitos na sua Conta Google.</p>"],
+        ["Alterações a esta política",
+         "<p>Se esta política mudar (por exemplo, quando o jogo ganhar novas funcionalidades), a nova versão será publicada aqui com a sua data.</p>"],
+        ["Contacto",
+         "<p>Dúvidas? Escreva para " + contact + " ou abra um pedido no " + issues + ". Também no jogo: <em>Definições → Contato / Suporte</em>.</p>"]
+      ],
+      over: "GAME OVER?", foot: "Nunca. Continue a jogar. 🕹️"
+    },
+    fr: {
+      coin: "INSERT COIN", title: "Politique de confidentialité", date: "Dernière mise à jour : 21 octobre 2026",
+      lead: "Comment <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) pour Android traite les informations. En bref : vos parties vous appartiennent.",
+      score: [["0", "publicités"], ["0", "traceurs"], ["0", "serveurs propres"], ["1", "service facultatif : Play Jeux"]],
+      lv: "NIVEAU", boss: "BOSS FINAL",
+      levels: [
+        ["Vos données restent sur votre appareil",
+         "<p>Le jeu enregistre localement, uniquement sur votre appareil, ce dont il a besoin :</p><ul><li>Scores et records de chaque mini-jeu.</li><li>Pièces, objets et personnalisations débloqués.</li><li>Succès locaux et progression des tutoriels.</li><li>Paramètres : langue, son, vibration, etc.</li></ul><p>Elles ne quittent pas l'appareil, ne sont pas sauvegardées dans le cloud et le développeur n'y a pas accès. Elles sont supprimées à la désinstallation du jeu ou en effaçant ses données dans les paramètres Android.</p>"],
+        ["Google Play Jeux : classements et succès",
+         "<div class='badges'>{B:Classements}{B:Succès}{B:Facultatif}</div><p>Endless Arcade utilise Google Play Jeux pour ses classements et trophées. Lorsque le jeu se connecte à votre profil Play Jeux :</p><ul><li>Google traite votre identifiant de joueur, votre pseudo et votre avatar, ainsi que les scores envoyés et les succès débloqués.</li><li>D'autres joueurs peuvent voir votre pseudo, votre avatar et vos scores dans les classements, selon la visibilité choisie dans votre profil Play Jeux.</li><li>Le développeur ne reçoit de Google que le nécessaire pour afficher classements et succès ; jamais votre e-mail ni d'autres données de votre compte Google.</li></ul><p>Google effectue ce traitement selon ses " + GP + "Règles de confidentialité</a> et ses " + GT + "Conditions d'utilisation</a>. Vous pouvez modifier la visibilité, vous déconnecter ou supprimer vos données depuis l'appli Google Play Jeux ou votre compte Google. Vous pouvez jouer sans Play Jeux.</p>"],
+        ["Autorisations",
+         "<ul><li><strong>Vibreur</strong> : retour haptique pendant le jeu. Désactivable dans les Paramètres.</li><li><strong>Capteurs de mouvement</strong> (gyroscope/accéléromètre) : effets visuels uniquement ; traités en temps réel, jamais enregistrés ni envoyés.</li></ul><p>Le jeu n'accède ni à votre position, ni à vos contacts, ni à l'appareil photo, au micro, aux photos ou aux fichiers.</p>"],
+        ["Publicité, analyse et tiers",
+         "<p>Pas de publicité, pas de SDK d'analyse ou de suivi, et aucune vente ni partage de données personnelles avec des tiers. Le seul service externe est Google Play Jeux.</p>"],
+        ["Mineurs",
+         "<p>Le développeur ne collecte sciemment aucune donnée personnelle, y compris celles des mineurs. L'utilisation de Play Jeux par des mineurs relève des règles de Google et du contrôle parental Google Family Link.</p>"],
+        ["Sécurité et conservation",
+         "<p>Les données locales résident dans l'espace privé de l'appli, illisible par les autres applis, jusqu'à la désinstallation du jeu ou l'effacement de ses données. Les données Play Jeux sont conservées selon les règles de Google.</p>"],
+        ["Vos droits",
+         "<p>Le développeur ne conserve aucune donnée personnelle vous concernant : il n'y a donc rien à consulter, rectifier ou supprimer dans ses systèmes. Pour les données traitées par Google, exercez vos droits depuis votre compte Google.</p>"],
+        ["Modifications de cette politique",
+         "<p>Si cette politique change (par exemple lorsque le jeu reçoit de nouvelles fonctionnalités), la nouvelle version sera publiée ici avec sa date.</p>"],
+        ["Contact",
+         "<p>Des questions ? Écrivez à " + contact + " ou ouvrez un ticket sur " + issues + ". Aussi depuis le jeu : <em>Paramètres → Contact / Support</em>.</p>"]
+      ],
+      over: "GAME OVER ?", foot: "Jamais. Continuez à jouer. 🕹️"
+    }
+  };
+
+  var tick = '<svg viewBox="0 0 24 24" fill="none" stroke="#7ed957" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>';
+  var tileColors = ["--pink", "--cyan", "--gold", "--green"];
+  var levelsEl = document.querySelector("[data-levels]");
+  var scoreEl = document.querySelector("[data-score]");
+  var io = "IntersectionObserver" in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 }) : null;
+
+  function render(lang) {
+    var t = T[lang];
+    document.documentElement.lang = lang;
+    document.title = "Endless Arcade — " + t.title;
+    document.querySelectorAll("[data-t]").forEach(function (el) { el.innerHTML = t[el.dataset.t]; });
+    scoreEl.innerHTML = t.score.map(function (s, i) {
+      return '<div class="tile" style="--c:var(' + tileColors[i] + ')"><b>' + s[0] + "</b><span>" + s[1] + "</span></div>";
+    }).join("");
+    levelsEl.innerHTML = t.levels.map(function (l, i) {
+      var last = i === t.levels.length - 1;
+      var body = l[1].replace(/\{B:([^}]+)\}/g, '<span class="badge">' + tick + "$1</span>");
+      return '<section class="level' + (last ? " boss" : "") + '" style="--c:var(' + colors[i] + ')">' +
+        '<div class="lv pixel">' + (last ? t.boss : t.lv + " " + (i + 1)) + "</div><h2>" + l[0] + "</h2>" + body + "</section>";
+    }).join("");
+    levelsEl.querySelectorAll(".level").forEach(function (s) { io ? io.observe(s) : s.classList.add("on"); });
+    document.querySelectorAll(".bar button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === lang); });
+  }
+
+  function pick() {
+    var q = new URLSearchParams(location.search).get("lang");
+    if (T[q]) return q;
+    var nav = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < nav.length; i++) { var c = String(nav[i]).slice(0, 2).toLowerCase(); if (T[c]) return c; }
+    return "en";
+  }
+  document.querySelectorAll(".bar button").forEach(function (b) {
+    b.addEventListener("click", function () { render(b.dataset.lang); history.replaceState(null, "", "?lang=" + b.dataset.lang); });
+  });
+  render(pick());
+
+  // Starfield: drifting pixel stars, still when the viewer asks for reduced motion.
+  var cv = document.getElementById("stars"), cx = cv.getContext("2d"), stars = [], W, H;
+  var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function size() {
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.width = innerWidth * d; H = cv.height = innerHeight * d;
+    stars = [];
+    for (var i = 0; i < 140; i++) stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 0.8 + 0.2, p: Math.random() * 6 });
+  }
+  function frame(ts) {
+    var g = cx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, "#07061a"); g.addColorStop(0.6, "#140a3a"); g.addColorStop(1, "#2a0b4f");
+    cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      if (!still) { s.y += s.z * 0.6; if (s.y > H) { s.y = 0; s.x = Math.random() * W; } }
+      var a = 0.5 + 0.5 * Math.sin(ts / 600 + s.p);
+      cx.fillStyle = "rgba(255,255,255," + (s.z * a).toFixed(2) + ")";
+      var r = s.z > 0.8 ? 3 : 2;
+      cx.fillRect(s.x | 0, s.y | 0, r, r);
+    }
+    if (!still) requestAnimationFrame(frame);
+  }
+  addEventListener("resize", function () { size(); if (still) frame(0); });
+  size(); still ? frame(0) : requestAnimationFrame(frame);
+})();
+</script>
+<noscript><p style="max-width:760px;margin:24px auto;padding:0 16px;color:#eef0ff">Endless Arcade stores your scores, coins and settings only on your device. No ads, no analytics, no tracking. Optional Google Play Games leaderboards and achievements are processed by Google under its Privacy Policy (policies.google.com/privacy). Contact: thorlabsapps@gmail.com</p></noscript>
+</body>
+</html>
