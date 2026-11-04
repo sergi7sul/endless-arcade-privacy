@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Endless Arcade — Privacy Policy</title>
-<meta name="description" content="Privacy policy for the Endless Arcade Android game: no ads, no tracking, optional Google Play Games leaderboards and achievements.">
+<meta name="description" content="Privacy policy of the Endless Arcade Android game: local saves, optional Google Play Games cloud saves, Google AdMob ads with consent, Google Play purchases.">
 <meta name="theme-color" content="#07061a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,112 +148,114 @@
   var issues = '<a href="' + ISSUES + '" rel="noopener">GitHub</a>';
   var colors = ["--cyan", "--green", "--gold", "--pink", "--violet", "--cyan", "--gold", "--pink", "--green"];
 
+  var GA = '<a href="https://policies.google.com/technologies/partner-sites" rel="noopener">';
+  var GADS = '<a href="https://myadcenter.google.com/" rel="noopener">';
   var T = {
     es: {
-      coin: "INSERT COIN", title: "Política de privacidad", date: "Última actualización: 21 de octubre de 2026",
-      lead: "Cómo trata la información <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android. Versión corta: tus partidas son tuyas.",
-      score: [["0", "anuncios"], ["0", "rastreadores"], ["0", "servidores propios"], ["1", "servicio opcional: Play Juegos"]],
+      coin: "INSERT COIN", title: "Política de privacidad", date: "Última actualización: 4 de noviembre de 2026",
+      lead: "Cómo trata la información <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android. Versión corta: tus partidas son tuyas, el juego se financia con anuncios de Google AdMob y tú decides sobre los anuncios personalizados.",
+      score: [["0", "servidores propios"], ["0", "datos vendidos"], ["1", "red de anuncios: Google AdMob"], ["✓", "consentimiento que puedes cambiar"]],
       lv: "NIVEL", boss: "JEFE FINAL",
       levels: [
-        ["Tus datos se quedan en tu dispositivo",
-         "<p>El juego guarda localmente, solo en tu dispositivo, lo que necesita para funcionar:</p><ul><li>Puntuaciones y récords de cada minijuego.</li><li>Monedas, objetos y personalizaciones desbloqueadas.</li><li>Logros locales y progreso de los tutoriales.</li><li>Ajustes: idioma, sonido, vibración, etc.</li></ul><p>No salen del dispositivo, no se copian en la nube y el desarrollador no tiene acceso a ellos. Se borran al desinstalar el juego o al borrar sus datos desde los ajustes de Android.</p>"],
-        ["Google Play Juegos: clasificaciones y logros",
-         "<div class='badges'>{B:Clasificaciones}{B:Logros}{B:Opcional}</div><p>Endless Arcade usa Google Play Juegos para sus clasificaciones y trofeos. Cuando el juego se conecta a tu perfil de Play Juegos:</p><ul><li>Google trata tu identificador de jugador, tu nombre de jugador y tu avatar, junto con las puntuaciones que envías y los logros que desbloqueas.</li><li>Tu nombre, avatar y puntuaciones pueden verlos otros jugadores en las clasificaciones, según la visibilidad que elijas en tu perfil de Play Juegos.</li><li>El desarrollador solo recibe de Google lo necesario para mostrar clasificaciones y logros; nunca tu correo ni otros datos de tu cuenta de Google.</li></ul><p>Google realiza este tratamiento según su " + GP + "Política de privacidad</a> y sus " + GT + "Términos del servicio</a>. Puedes cambiar la visibilidad, cerrar sesión o eliminar tus datos desde la app Google Play Juegos o tu cuenta de Google. Puedes jugar sin Play Juegos.</p>"],
+        ["Tus partidas se guardan en tu dispositivo",
+         "<p>El juego guarda en tu dispositivo lo que necesita para funcionar:</p><ul><li>Puntuaciones, récords, estrellas y niveles superados.</li><li>Monedas, objetos y personalizaciones desbloqueadas.</li><li>Logros locales, misiones y progreso de los tutoriales.</li><li>Ajustes: idioma, sonido, vibración, recordatorios, etc.</li></ul><p>El desarrollador no tiene servidores propios y no puede ver estos datos. Solo salen del dispositivo si activas el guardado en la nube de Play Juegos (siguiente nivel).</p>"],
+        ["Google Play Juegos: clasificaciones, logros y nube",
+         "<div class='badges'>{B:Clasificaciones}{B:Logros}{B:Guardado en la nube}{B:Opcional}</div><p>Si conectas tu perfil de Google Play Juegos:</p><ul><li>Google trata tu identificador, nombre de jugador y avatar, las puntuaciones que envías y los logros que desbloqueas. Otros jugadores pueden ver tu nombre, avatar y puntuaciones en las clasificaciones.</li><li>Tu progreso se copia en <em>Partidas guardadas</em> de tu cuenta de Google para recuperarlo en otro dispositivo. Esa copia la guarda Google, no el desarrollador.</li></ul><p>Se aplican la " + GP + "Política de Privacidad</a> y las " + GT + "Condiciones</a> de Google. Puedes jugar sin conectar Play Juegos.</p>"],
+        ["Publicidad: Google AdMob",
+         "<div class='badges'>{B:Anuncios con recompensa opcionales}{B:Intersticiales}{B:Consentimiento}</div><p>El juego muestra anuncios de <strong>Google AdMob</strong>: anuncios con recompensa que tú eliges ver (por ejemplo, para duplicar monedas) y anuncios a pantalla completa entre partidas. Para servir y medir los anuncios, el SDK de Google puede tratar:</p><ul><li>El identificador de publicidad de Android y datos del dispositivo (modelo, sistema, idioma).</li><li>La dirección IP, de la que se deduce una ubicación aproximada.</li><li>Interacciones con los anuncios (impresiones, clics) y diagnósticos.</li></ul><p><strong>En el Espacio Económico Europeo, el Reino Unido y Suiza</strong> te pedimos consentimiento con el formulario de Google antes de cargar anuncios. Puedes cambiar tu elección cuando quieras en <em>Ajustes → Privacidad</em>. Sin consentimiento solo se muestran anuncios no personalizados.</p><p>En cualquier país puedes restablecer o eliminar el ID de publicidad en los ajustes de Android (<em>Privacidad → Anuncios</em>) y gestionar la personalización en " + GADS + "Mi Centro de Anuncios</a>. Más información: " + GA + "cómo usa Google los datos de las apps que usan sus servicios</a>.</p>"],
+        ["Compras dentro de la app",
+         "<p>Las compras opcionales (Sin anuncios, Pase Arcade, packs de monedas, pase de temporada) se pagan con <strong>Google Play</strong>. El pago y tus datos de pago los trata Google. El juego solo recibe la confirmación de qué producto has comprado para entregártelo y restaurarlo si reinstalas. <em>Sin anuncios</em> quita los anuncios entre partidas; los anuncios con recompensa siguen disponibles si quieres verlos.</p>"],
         ["Permisos",
-         "<ul><li><strong>Vibración</strong>: respuesta háptica al jugar. Se desactiva en Ajustes.</li><li><strong>Sensores de movimiento</strong> (giroscopio/acelerómetro): solo para efectos visuales; se procesan al instante y no se guardan ni se envían.</li></ul><p>El juego no accede a tu ubicación, contactos, cámara, micrófono, fotos ni archivos.</p>"],
-        ["Publicidad, analítica y terceros",
-         "<p>Sin anuncios, sin SDK de analítica o seguimiento, y sin venta ni cesión de datos personales a terceros. El único servicio externo es Google Play Juegos.</p>"],
+         "<ul><li><strong>Internet y estado de la red</strong>: anuncios, Play Juegos y compras.</li><li><strong>ID de publicidad</strong>: anuncios, según tu consentimiento y los ajustes de Android.</li><li><strong>Notificaciones</strong>: un recordatorio diario opcional; puedes negarlo o desactivarlo.</li><li><strong>Vibración</strong>: respuesta háptica, desactivable en Ajustes.</li><li><strong>Sensores de movimiento</strong>: solo efectos visuales; no se guardan ni se envían.</li></ul><p>El juego no accede a tu ubicación precisa, contactos, cámara, micrófono, fotos ni archivos.</p>"],
         ["Menores",
-         "<p>El desarrollador no recoge conscientemente datos personales de nadie, incluidos menores. El uso de Play Juegos por menores se rige por las normas de Google y los controles parentales de Google Family Link.</p>"],
+         "<p>Endless Arcade no está dirigido específicamente a menores de 13 años y el desarrollador no recoge conscientemente sus datos personales. El uso de los servicios de Google por menores se rige por las normas de Google y los controles parentales de Google Family Link.</p>"],
         ["Seguridad y conservación",
-         "<p>Los datos locales viven en el almacenamiento privado de la app, que otras apps no pueden leer, hasta que desinstalas el juego o borras sus datos. Los datos de Play Juegos se conservan según las políticas de Google.</p>"],
-        ["Tus derechos",
-         "<p>El desarrollador no almacena datos personales tuyos, así que no hay nada que consultar, corregir o borrar en sus sistemas. Para los datos que trata Google, ejerce tus derechos desde tu cuenta de Google.</p>"],
-        ["Cambios en esta política",
-         "<p>Si la política cambia (por ejemplo, porque el juego estrene funciones), la nueva versión se publicará aquí con su fecha.</p>"],
+         "<p>Los datos locales viven en el almacenamiento privado de la app, que otras apps no pueden leer, hasta que desinstalas el juego o borras sus datos. Los datos que tratan Google Play Juegos, AdMob y Google Play se conservan según las políticas de Google. Las conexiones con Google van cifradas.</p>"],
+        ["Tus derechos y cambios",
+         "<p>El desarrollador no almacena datos personales tuyos en sus sistemas. Puedes retirar o cambiar el consentimiento de anuncios en <em>Ajustes → Privacidad</em>, restablecer tu ID de publicidad en Android y ejercer tus derechos sobre los datos que trata Google desde tu cuenta de Google. Si esta política cambia, la nueva versión se publicará aquí con su fecha.</p>"],
         ["Contacto",
-         "<p>¿Dudas? Escribe a " + contact + " o abre una consulta en " + issues + ". También desde el juego: <em>Ajustes → Contacto / Soporte</em>.</p>"]
+         "<p>¿Dudas? Escribe a " + contact + " o abre una consulta en " + issues + ". También desde el juego: <em>Ajustes → Contacto</em>.</p>"]
       ],
       badge: "", over: "GAME OVER?", foot: "Nunca. Sigue jugando. 🕹️"
     },
     en: {
-      coin: "INSERT COIN", title: "Privacy Policy", date: "Last updated: October 21, 2026",
-      lead: "How <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) for Android handles information. Short version: your games are yours.",
-      score: [["0", "ads"], ["0", "trackers"], ["0", "own servers"], ["1", "optional service: Play Games"]],
+      coin: "INSERT COIN", title: "Privacy Policy", date: "Last updated: November 4, 2026",
+      lead: "How <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) for Android handles information. Short version: your games are yours, the game is funded by Google AdMob ads, and you decide about personalised ads.",
+      score: [["0", "own servers"], ["0", "data sold"], ["1", "ad network: Google AdMob"], ["✓", "consent you can change"]],
       lv: "LEVEL", boss: "FINAL BOSS",
       levels: [
-        ["Your data stays on your device",
-         "<p>The game stores, locally and only on your device, what it needs to work:</p><ul><li>Scores and best results for every minigame.</li><li>Coins, items and unlocked customisations.</li><li>Local achievements and tutorial progress.</li><li>Settings: language, sound, vibration, etc.</li></ul><p>It never leaves the device, is not backed up to the cloud, and the developer cannot access it. It is deleted when you uninstall the game or clear its data in Android settings.</p>"],
-        ["Google Play Games: leaderboards and achievements",
-         "<div class='badges'>{B:Leaderboards}{B:Achievements}{B:Optional}</div><p>Endless Arcade uses Google Play Games for its leaderboards and trophies. When the game connects to your Play Games profile:</p><ul><li>Google processes your player ID, gamer name and avatar, plus the scores you submit and the achievements you unlock.</li><li>Other players may see your name, avatar and scores on leaderboards, depending on the visibility you choose in your Play Games profile.</li><li>The developer only receives from Google what is needed to show leaderboards and achievements; never your email or any other Google Account data.</li></ul><p>Google carries out this processing under its " + GP + "Privacy Policy</a> and " + GT + "Terms of Service</a>. You can change visibility, sign out or delete your data from the Google Play Games app or your Google Account. You can play without Play Games.</p>"],
+        ["Your games are saved on your device",
+         "<p>The game stores on your device what it needs to work:</p><ul><li>Scores, best results, stars and cleared levels.</li><li>Coins, items and unlocked customisations.</li><li>Local achievements, missions and tutorial progress.</li><li>Settings: language, sound, vibration, reminders, etc.</li></ul><p>The developer runs no servers and cannot see this data. It only leaves your device if you use Play Games cloud saves (next level).</p>"],
+        ["Google Play Games: leaderboards, achievements and cloud",
+         "<div class='badges'>{B:Leaderboards}{B:Achievements}{B:Cloud save}{B:Optional}</div><p>If you connect your Google Play Games profile:</p><ul><li>Google processes your player ID, gamer name and avatar, the scores you submit and the achievements you unlock. Other players may see your name, avatar and scores on leaderboards.</li><li>Your progress is copied to <em>Saved Games</em> in your Google Account so you can restore it on another device. Google stores that copy, not the developer.</li></ul><p>Google's " + GP + "Privacy Policy</a> and " + GT + "Terms</a> apply. You can play without connecting Play Games.</p>"],
+        ["Advertising: Google AdMob",
+         "<div class='badges'>{B:Optional rewarded ads}{B:Interstitials}{B:Consent}</div><p>The game shows <strong>Google AdMob</strong> ads: rewarded ads you choose to watch (for example, to double your coins) and full-screen ads between games. To serve and measure ads, Google's SDK may process:</p><ul><li>Your Android advertising ID and device data (model, OS, language).</li><li>Your IP address, from which an approximate location is inferred.</li><li>Ad interactions (impressions, clicks) and diagnostics.</li></ul><p><strong>In the European Economic Area, the UK and Switzerland</strong> we ask for your consent with Google's form before loading ads. You can change your choice at any time in <em>Settings → Privacy</em>. Without consent only non-personalised ads are shown.</p><p>Anywhere, you can reset or delete your advertising ID in Android settings (<em>Privacy → Ads</em>) and manage personalisation in " + GADS + "My Ad Center</a>. More: " + GA + "how Google uses information from apps that use its services</a>.</p>"],
+        ["In-app purchases",
+         "<p>Optional purchases (No ads, Arcade Pass, coin packs, season pass) are paid through <strong>Google Play</strong>. Google handles the payment and your payment details. The game only receives confirmation of which product you bought so it can deliver it and restore it if you reinstall. <em>No ads</em> removes ads between games; rewarded ads remain available if you want them.</p>"],
         ["Permissions",
-         "<ul><li><strong>Vibration</strong>: haptic feedback while playing. It can be turned off in Settings.</li><li><strong>Motion sensors</strong> (gyroscope/accelerometer): visual effects only; processed in real time, never stored or sent.</li></ul><p>The game does not access your location, contacts, camera, microphone, photos or files.</p>"],
-        ["Advertising, analytics and third parties",
-         "<p>No ads, no analytics or tracking SDKs, and no selling or sharing of personal data with third parties. The only external service is Google Play Games.</p>"],
+         "<ul><li><strong>Internet and network state</strong>: ads, Play Games and purchases.</li><li><strong>Advertising ID</strong>: ads, subject to your consent and Android settings.</li><li><strong>Notifications</strong>: an optional daily reminder; you can refuse or turn it off.</li><li><strong>Vibration</strong>: haptic feedback, can be turned off in Settings.</li><li><strong>Motion sensors</strong>: visual effects only; never stored or sent.</li></ul><p>The game does not access your precise location, contacts, camera, microphone, photos or files.</p>"],
         ["Children",
-         "<p>The developer does not knowingly collect personal data from anyone, including children. Children's use of Play Games is governed by Google's rules and Google Family Link parental controls.</p>"],
+         "<p>Endless Arcade is not specifically directed at children under 13, and the developer does not knowingly collect their personal data. Children's use of Google services is governed by Google's rules and Google Family Link parental controls.</p>"],
         ["Security and retention",
-         "<p>Local data lives in the app's private storage, which other apps cannot read, until you uninstall the game or clear its data. Play Games data is retained according to Google's policies.</p>"],
-        ["Your rights",
-         "<p>The developer stores no personal data about you, so there is nothing to access, correct or delete on its systems. For data processed by Google, exercise your rights from your Google Account.</p>"],
-        ["Changes to this policy",
-         "<p>If this policy changes (for example, when the game gets new features), the new version will be published here with its date.</p>"],
+         "<p>Local data lives in the app's private storage, which other apps cannot read, until you uninstall the game or clear its data. Data processed by Google Play Games, AdMob and Google Play is retained according to Google's policies. Connections to Google are encrypted.</p>"],
+        ["Your rights and changes",
+         "<p>The developer stores no personal data about you on its systems. You can withdraw or change ad consent in <em>Settings → Privacy</em>, reset your advertising ID in Android, and exercise your rights over data processed by Google from your Google Account. If this policy changes, the new version will be published here with its date.</p>"],
         ["Contact",
-         "<p>Questions? Email " + contact + " or open an issue on " + issues + ". Also from the game: <em>Settings → Contact / Support</em>.</p>"]
+         "<p>Questions? Email " + contact + " or open an issue on " + issues + ". Also from the game: <em>Settings → Contact</em>.</p>"]
       ],
       over: "GAME OVER?", foot: "Never. Keep playing. 🕹️"
     },
     pt: {
-      coin: "INSERT COIN", title: "Política de Privacidade", date: "Última atualização: 21 de outubro de 2026",
-      lead: "Como o <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android trata as informações. Versão curta: os seus jogos são seus.",
-      score: [["0", "anúncios"], ["0", "rastreadores"], ["0", "servidores próprios"], ["1", "serviço opcional: Play Jogos"]],
+      coin: "INSERT COIN", title: "Política de Privacidade", date: "Última atualização: 4 de novembro de 2026",
+      lead: "Como o <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) para Android trata informações. Versão curta: os seus jogos são seus, o jogo é financiado por anúncios do Google AdMob e é você quem decide sobre anúncios personalizados.",
+      score: [["0", "servidores próprios"], ["0", "dados vendidos"], ["1", "rede de anúncios: Google AdMob"], ["✓", "consentimento que pode mudar"]],
       lv: "NÍVEL", boss: "CHEFE FINAL",
       levels: [
-        ["Os seus dados ficam no seu dispositivo",
-         "<p>O jogo guarda localmente, apenas no seu dispositivo, o necessário para funcionar:</p><ul><li>Pontuações e recordes de cada minijogo.</li><li>Moedas, objetos e personalizações desbloqueadas.</li><li>Conquistas locais e progresso dos tutoriais.</li><li>Definições: idioma, som, vibração, etc.</li></ul><p>Não saem do dispositivo, não são copiados para a nuvem e o programador não tem acesso a eles. São apagados ao desinstalar o jogo ou limpar os seus dados nas definições do Android.</p>"],
-        ["Google Play Jogos: classificações e conquistas",
-         "<div class='badges'>{B:Classificações}{B:Conquistas}{B:Opcional}</div><p>O Endless Arcade usa o Google Play Jogos para classificações e troféus. Quando o jogo se liga ao seu perfil do Play Jogos:</p><ul><li>A Google trata o seu ID de jogador, nome de jogador e avatar, bem como as pontuações enviadas e as conquistas desbloqueadas.</li><li>Outros jogadores podem ver o seu nome, avatar e pontuações nas classificações, conforme a visibilidade escolhida no seu perfil do Play Jogos.</li><li>O programador recebe da Google apenas o necessário para mostrar classificações e conquistas; nunca o seu email nem outros dados da Conta Google.</li></ul><p>A Google faz este tratamento ao abrigo da sua " + GP + "Política de Privacidade</a> e dos " + GT + "Termos de Utilização</a>. Pode alterar a visibilidade, terminar sessão ou eliminar os seus dados na app Google Play Jogos ou na sua Conta Google. Pode jogar sem o Play Jogos.</p>"],
+        ["Os seus jogos ficam guardados no dispositivo",
+         "<p>O jogo guarda no seu dispositivo o necessário para funcionar:</p><ul><li>Pontuações, recordes, estrelas e níveis concluídos.</li><li>Moedas, objetos e personalizações desbloqueadas.</li><li>Conquistas locais, missões e progresso dos tutoriais.</li><li>Definições: idioma, som, vibração, lembretes, etc.</li></ul><p>O programador não tem servidores e não consegue ver estes dados. Só saem do dispositivo se usar o salvamento na nuvem do Play Jogos (próximo nível).</p>"],
+        ["Google Play Jogos: classificações, conquistas e nuvem",
+         "<div class='badges'>{B:Classificações}{B:Conquistas}{B:Nuvem}{B:Opcional}</div><p>Se ligar o seu perfil do Google Play Jogos:</p><ul><li>A Google trata o seu ID de jogador, nome e avatar, as pontuações enviadas e as conquistas desbloqueadas. Outros jogadores podem ver o seu nome, avatar e pontuações nas classificações.</li><li>O seu progresso é copiado para <em>Jogos guardados</em> na sua Conta Google para o recuperar noutro dispositivo. Essa cópia é guardada pela Google, não pelo programador.</li></ul><p>Aplicam-se a " + GP + "Política de Privacidade</a> e os " + GT + "Termos</a> da Google. Pode jogar sem ligar o Play Jogos.</p>"],
+        ["Publicidade: Google AdMob",
+         "<div class='badges'>{B:Anúncios com recompensa opcionais}{B:Intersticiais}{B:Consentimento}</div><p>O jogo mostra anúncios do <strong>Google AdMob</strong>: anúncios com recompensa que escolhe ver (por exemplo, para duplicar moedas) e anúncios em ecrã inteiro entre partidas. Para servir e medir anúncios, o SDK da Google pode tratar:</p><ul><li>O ID de publicidade do Android e dados do dispositivo (modelo, sistema, idioma).</li><li>O endereço IP, do qual se deduz uma localização aproximada.</li><li>Interações com anúncios (impressões, cliques) e diagnósticos.</li></ul><p><strong>No Espaço Económico Europeu, no Reino Unido e na Suíça</strong> pedimos o seu consentimento com o formulário da Google antes de carregar anúncios. Pode mudar a sua escolha a qualquer momento em <em>Definições → Privacidade</em>. Sem consentimento só são mostrados anúncios não personalizados.</p><p>Em qualquer país pode repor ou eliminar o ID de publicidade nas definições do Android (<em>Privacidade → Anúncios</em>) e gerir a personalização no " + GADS + "Meu Centro de Anúncios</a>. Mais: " + GA + "como a Google usa as informações das apps que usam os seus serviços</a>.</p>"],
+        ["Compras na app",
+         "<p>As compras opcionais (Sem anúncios, Passe Arcade, pacotes de moedas, passe de temporada) são pagas através do <strong>Google Play</strong>. A Google trata o pagamento e os seus dados de pagamento. O jogo só recebe a confirmação do produto comprado para o entregar e restaurar se reinstalar. <em>Sem anúncios</em> remove os anúncios entre partidas; os anúncios com recompensa continuam disponíveis se os quiser ver.</p>"],
         ["Permissões",
-         "<ul><li><strong>Vibração</strong>: feedback háptico ao jogar. Pode ser desativada nas Definições.</li><li><strong>Sensores de movimento</strong> (giroscópio/acelerómetro): só para efeitos visuais; processados no momento, nunca guardados nem enviados.</li></ul><p>O jogo não acede à sua localização, contactos, câmara, microfone, fotos ou ficheiros.</p>"],
-        ["Publicidade, análises e terceiros",
-         "<p>Sem anúncios, sem SDK de análise ou rastreio, e sem venda ou partilha de dados pessoais com terceiros. O único serviço externo é o Google Play Jogos.</p>"],
+         "<ul><li><strong>Internet e estado da rede</strong>: anúncios, Play Jogos e compras.</li><li><strong>ID de publicidade</strong>: anúncios, conforme o seu consentimento e as definições do Android.</li><li><strong>Notificações</strong>: um lembrete diário opcional; pode recusar ou desativar.</li><li><strong>Vibração</strong>: feedback háptico, desativável nas Definições.</li><li><strong>Sensores de movimento</strong>: só efeitos visuais; nunca guardados nem enviados.</li></ul><p>O jogo não acede à sua localização precisa, contactos, câmara, microfone, fotos ou ficheiros.</p>"],
         ["Menores",
-         "<p>O programador não recolhe conscientemente dados pessoais de ninguém, incluindo menores. O uso do Play Jogos por menores rege-se pelas regras da Google e pelos controlos parentais do Google Family Link.</p>"],
+         "<p>O Endless Arcade não se destina especificamente a menores de 13 anos e o programador não recolhe conscientemente os seus dados pessoais. O uso dos serviços da Google por menores rege-se pelas regras da Google e pelos controlos parentais do Google Family Link.</p>"],
         ["Segurança e conservação",
-         "<p>Os dados locais ficam no armazenamento privado da app, que outras apps não conseguem ler, até desinstalar o jogo ou limpar os seus dados. Os dados do Play Jogos são conservados segundo as políticas da Google.</p>"],
-        ["Os seus direitos",
-         "<p>O programador não guarda dados pessoais seus, por isso não há nada a consultar, corrigir ou apagar nos seus sistemas. Para os dados tratados pela Google, exerça os seus direitos na sua Conta Google.</p>"],
-        ["Alterações a esta política",
-         "<p>Se esta política mudar (por exemplo, quando o jogo ganhar novas funcionalidades), a nova versão será publicada aqui com a sua data.</p>"],
+         "<p>Os dados locais ficam no armazenamento privado da app, que outras apps não conseguem ler, até desinstalar o jogo ou limpar os seus dados. Os dados tratados pelo Google Play Jogos, AdMob e Google Play são conservados segundo as políticas da Google. As ligações à Google são cifradas.</p>"],
+        ["Os seus direitos e alterações",
+         "<p>O programador não guarda dados pessoais seus nos seus sistemas. Pode retirar ou mudar o consentimento de anúncios em <em>Definições → Privacidade</em>, repor o ID de publicidade no Android e exercer os seus direitos sobre os dados tratados pela Google na sua Conta Google. Se esta política mudar, a nova versão será publicada aqui com a sua data.</p>"],
         ["Contacto",
-         "<p>Dúvidas? Escreva para " + contact + " ou abra um pedido no " + issues + ". Também no jogo: <em>Definições → Contato / Suporte</em>.</p>"]
+         "<p>Dúvidas? Escreva para " + contact + " ou abra um pedido no " + issues + ". Também no jogo: <em>Definições → Contacto</em>.</p>"]
       ],
       over: "GAME OVER?", foot: "Nunca. Continue a jogar. 🕹️"
     },
     fr: {
-      coin: "INSERT COIN", title: "Politique de confidentialité", date: "Dernière mise à jour : 21 octobre 2026",
-      lead: "Comment <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) pour Android traite les informations. En bref : vos parties vous appartiennent.",
-      score: [["0", "publicités"], ["0", "traceurs"], ["0", "serveurs propres"], ["1", "service facultatif : Play Jeux"]],
+      coin: "INSERT COIN", title: "Politique de confidentialité", date: "Dernière mise à jour : 4 novembre 2026",
+      lead: "Comment <strong>Endless Arcade</strong> (<code>com.thorlabs.endlessArcade</code>) pour Android traite les informations. En bref : vos parties vous appartiennent, le jeu est financé par des annonces Google AdMob et c'est vous qui décidez pour les annonces personnalisées.",
+      score: [["0", "serveurs propres"], ["0", "données vendues"], ["1", "régie publicitaire : Google AdMob"], ["✓", "consentement modifiable"]],
       lv: "NIVEAU", boss: "BOSS FINAL",
       levels: [
-        ["Vos données restent sur votre appareil",
-         "<p>Le jeu enregistre localement, uniquement sur votre appareil, ce dont il a besoin :</p><ul><li>Scores et records de chaque mini-jeu.</li><li>Pièces, objets et personnalisations débloqués.</li><li>Succès locaux et progression des tutoriels.</li><li>Paramètres : langue, son, vibration, etc.</li></ul><p>Elles ne quittent pas l'appareil, ne sont pas sauvegardées dans le cloud et le développeur n'y a pas accès. Elles sont supprimées à la désinstallation du jeu ou en effaçant ses données dans les paramètres Android.</p>"],
-        ["Google Play Jeux : classements et succès",
-         "<div class='badges'>{B:Classements}{B:Succès}{B:Facultatif}</div><p>Endless Arcade utilise Google Play Jeux pour ses classements et trophées. Lorsque le jeu se connecte à votre profil Play Jeux :</p><ul><li>Google traite votre identifiant de joueur, votre pseudo et votre avatar, ainsi que les scores envoyés et les succès débloqués.</li><li>D'autres joueurs peuvent voir votre pseudo, votre avatar et vos scores dans les classements, selon la visibilité choisie dans votre profil Play Jeux.</li><li>Le développeur ne reçoit de Google que le nécessaire pour afficher classements et succès ; jamais votre e-mail ni d'autres données de votre compte Google.</li></ul><p>Google effectue ce traitement selon ses " + GP + "Règles de confidentialité</a> et ses " + GT + "Conditions d'utilisation</a>. Vous pouvez modifier la visibilité, vous déconnecter ou supprimer vos données depuis l'appli Google Play Jeux ou votre compte Google. Vous pouvez jouer sans Play Jeux.</p>"],
+        ["Vos parties sont enregistrées sur votre appareil",
+         "<p>Le jeu enregistre sur votre appareil ce dont il a besoin :</p><ul><li>Scores, records, étoiles et niveaux terminés.</li><li>Pièces, objets et personnalisations débloqués.</li><li>Succès locaux, missions et progression des tutoriels.</li><li>Paramètres : langue, son, vibration, rappels, etc.</li></ul><p>Le développeur n'a aucun serveur et ne peut pas voir ces données. Elles ne quittent l'appareil que si vous utilisez la sauvegarde cloud de Play Jeux (niveau suivant).</p>"],
+        ["Google Play Jeux : classements, succès et cloud",
+         "<div class='badges'>{B:Classements}{B:Succès}{B:Sauvegarde cloud}{B:Facultatif}</div><p>Si vous connectez votre profil Google Play Jeux :</p><ul><li>Google traite votre identifiant de joueur, votre pseudo et votre avatar, les scores envoyés et les succès débloqués. D'autres joueurs peuvent voir votre pseudo, votre avatar et vos scores dans les classements.</li><li>Votre progression est copiée dans les <em>Jeux sauvegardés</em> de votre compte Google pour la récupérer sur un autre appareil. Cette copie est conservée par Google, pas par le développeur.</li></ul><p>Les " + GP + "Règles de confidentialité</a> et les " + GT + "Conditions</a> de Google s'appliquent. Vous pouvez jouer sans connecter Play Jeux.</p>"],
+        ["Publicité : Google AdMob",
+         "<div class='badges'>{B:Annonces avec récompense facultatives}{B:Interstitiels}{B:Consentement}</div><p>Le jeu affiche des annonces <strong>Google AdMob</strong> : des annonces avec récompense que vous choisissez de regarder (par exemple pour doubler vos pièces) et des annonces plein écran entre les parties. Pour diffuser et mesurer les annonces, le SDK de Google peut traiter :</p><ul><li>L'identifiant publicitaire Android et des données de l'appareil (modèle, système, langue).</li><li>L'adresse IP, dont on déduit une localisation approximative.</li><li>Les interactions avec les annonces (impressions, clics) et des diagnostics.</li></ul><p><strong>Dans l'Espace économique européen, au Royaume-Uni et en Suisse</strong>, nous vous demandons votre consentement avec le formulaire de Google avant de charger des annonces. Vous pouvez modifier votre choix à tout moment dans <em>Paramètres → Confidentialité</em>. Sans consentement, seules des annonces non personnalisées sont affichées.</p><p>Partout, vous pouvez réinitialiser ou supprimer l'identifiant publicitaire dans les paramètres Android (<em>Confidentialité → Annonces</em>) et gérer la personnalisation dans " + GADS + "Mon Centre publicitaire</a>. En savoir plus : " + GA + "comment Google utilise les informations des applis qui utilisent ses services</a>.</p>"],
+        ["Achats intégrés",
+         "<p>Les achats facultatifs (Sans pub, Pass Arcade, packs de pièces, pass de saison) sont payés via <strong>Google Play</strong>. Google traite le paiement et vos données de paiement. Le jeu reçoit seulement la confirmation du produit acheté pour vous le livrer et le restaurer si vous réinstallez. <em>Sans pub</em> supprime les annonces entre les parties ; les annonces avec récompense restent disponibles si vous le souhaitez.</p>"],
         ["Autorisations",
-         "<ul><li><strong>Vibreur</strong> : retour haptique pendant le jeu. Désactivable dans les Paramètres.</li><li><strong>Capteurs de mouvement</strong> (gyroscope/accéléromètre) : effets visuels uniquement ; traités en temps réel, jamais enregistrés ni envoyés.</li></ul><p>Le jeu n'accède ni à votre position, ni à vos contacts, ni à l'appareil photo, au micro, aux photos ou aux fichiers.</p>"],
-        ["Publicité, analyse et tiers",
-         "<p>Pas de publicité, pas de SDK d'analyse ou de suivi, et aucune vente ni partage de données personnelles avec des tiers. Le seul service externe est Google Play Jeux.</p>"],
+         "<ul><li><strong>Internet et état du réseau</strong> : annonces, Play Jeux et achats.</li><li><strong>Identifiant publicitaire</strong> : annonces, selon votre consentement et les paramètres Android.</li><li><strong>Notifications</strong> : un rappel quotidien facultatif ; vous pouvez le refuser ou le désactiver.</li><li><strong>Vibreur</strong> : retour haptique, désactivable dans les Paramètres.</li><li><strong>Capteurs de mouvement</strong> : effets visuels uniquement ; jamais enregistrés ni envoyés.</li></ul><p>Le jeu n'accède ni à votre position précise, ni à vos contacts, ni à l'appareil photo, au micro, aux photos ou aux fichiers.</p>"],
         ["Mineurs",
-         "<p>Le développeur ne collecte sciemment aucune donnée personnelle, y compris celles des mineurs. L'utilisation de Play Jeux par des mineurs relève des règles de Google et du contrôle parental Google Family Link.</p>"],
+         "<p>Endless Arcade ne s'adresse pas spécifiquement aux enfants de moins de 13 ans et le développeur ne collecte pas sciemment leurs données personnelles. L'utilisation des services Google par des mineurs relève des règles de Google et du contrôle parental Google Family Link.</p>"],
         ["Sécurité et conservation",
-         "<p>Les données locales résident dans l'espace privé de l'appli, illisible par les autres applis, jusqu'à la désinstallation du jeu ou l'effacement de ses données. Les données Play Jeux sont conservées selon les règles de Google.</p>"],
-        ["Vos droits",
-         "<p>Le développeur ne conserve aucune donnée personnelle vous concernant : il n'y a donc rien à consulter, rectifier ou supprimer dans ses systèmes. Pour les données traitées par Google, exercez vos droits depuis votre compte Google.</p>"],
-        ["Modifications de cette politique",
-         "<p>Si cette politique change (par exemple lorsque le jeu reçoit de nouvelles fonctionnalités), la nouvelle version sera publiée ici avec sa date.</p>"],
+         "<p>Les données locales résident dans l'espace privé de l'appli, illisible par les autres applis, jusqu'à la désinstallation du jeu ou l'effacement de ses données. Les données traitées par Google Play Jeux, AdMob et Google Play sont conservées selon les règles de Google. Les connexions avec Google sont chiffrées.</p>"],
+        ["Vos droits et modifications",
+         "<p>Le développeur ne conserve aucune donnée personnelle vous concernant dans ses systèmes. Vous pouvez retirer ou modifier votre consentement publicitaire dans <em>Paramètres → Confidentialité</em>, réinitialiser votre identifiant publicitaire dans Android et exercer vos droits sur les données traitées par Google depuis votre compte Google. Si cette politique change, la nouvelle version sera publiée ici avec sa date.</p>"],
         ["Contact",
-         "<p>Des questions ? Écrivez à " + contact + " ou ouvrez un ticket sur " + issues + ". Aussi depuis le jeu : <em>Paramètres → Contact / Support</em>.</p>"]
+         "<p>Des questions ? Écrivez à " + contact + " ou ouvrez un ticket sur " + issues + ". Aussi depuis le jeu : <em>Paramètres → Contact</em>.</p>"]
       ],
       over: "GAME OVER ?", foot: "Jamais. Continuez à jouer. 🕹️"
     }
@@ -324,6 +326,6 @@
   size(); still ? frame(0) : requestAnimationFrame(frame);
 })();
 </script>
-<noscript><p style="max-width:760px;margin:24px auto;padding:0 16px;color:#eef0ff">Endless Arcade stores your scores, coins and settings only on your device. No ads, no analytics, no tracking. Optional Google Play Games leaderboards and achievements are processed by Google under its Privacy Policy (policies.google.com/privacy). Contact: thorlabsapps@gmail.com</p></noscript>
+<noscript><p style="max-width:760px;margin:24px auto;padding:0 16px;color:#eef0ff">Endless Arcade stores your progress on your device and, if you connect Google Play Games, in your Google Saved Games. It shows Google AdMob ads (personalised only with your consent in the EEA, UK and Switzerland; change it in Settings → Privacy) and offers optional Google Play purchases. The developer runs no servers and sells no data. Contact: thorlabsapps@gmail.com</p></noscript>
 </body>
 </html>
